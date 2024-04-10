@@ -25,10 +25,9 @@ clover.xml
 /wordpress/
 
 # Composer
-/vendor/
-!/vendor/matomo
-!/vendor/mustangostang
-!/vendor/autoload.php
+/vendor/bin
+/vendor/composer
+/vendor/squizlabs
 composer.lock
 
 # NPM
