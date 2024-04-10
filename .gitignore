@@ -26,6 +26,9 @@ clover.xml
 
 # Composer
 /vendor/
+!/vendor/matomo
+!/vendor/mustangostang
+!/vendor/autoload.php
 composer.lock
 
 # NPM
