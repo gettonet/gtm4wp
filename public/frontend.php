@@ -176,7 +176,7 @@ function gtm4wp_add_basic_datalayer_data( $data_layer ) {
 
 	if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_LOGGEDIN ] ) {
 		$data_layer['visitorLoginState'] = 'logged-out';
-		
+
 		if ( is_user_logged_in() ) {
 			$data_layer['visitorLoginState'] = 'logged-in';
 		}
@@ -415,43 +415,7 @@ function gtm4wp_add_basic_datalayer_data( $data_layer ) {
 	}
 
 	if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_BROWSERDATA ] || $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_OSDATA ] || $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_DEVICEDATA ] ) {
-		spl_autoload_register(
-			function( $class ) {
-				$class_parts = explode( '\\', $class );
-				if ( 'WhichBrowser' === $class_parts[0] ) {
-					include dirname( __FILE__ ) . '/../integration/whichbrowser/' . str_replace( array( 'WhichBrowser', '\\' ), array( 'src', '/' ), $class ) . '.php';
-				}
-			}
-		);
-
-		require_once dirname( __FILE__ ) . '/../integration/whichbrowser/src/Parser.php';
-
-		$gtp4wp_headers = getallheaders();
-		if ( ( false === $gtp4wp_headers ) && isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
-			$gtp4wp_headers = wp_strip_all_tags( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
-		}
-		if ( false !== $gtp4wp_headers ) {
-			$detected = new WhichBrowser\Parser( $gtp4wp_headers );
-
-			if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_BROWSERDATA ] ) {
-				$data_layer['browserName']    = isset( $detected->browser->name ) ? $detected->browser->name : '';
-				$data_layer['browserVersion'] = isset( $detected->browser->version->value ) ? $detected->browser->version->value : '';
-
-				$data_layer['browserEngineName']    = isset( $detected->engine->name ) ? $detected->engine->name : '';
-				$data_layer['browserEngineVersion'] = isset( $detected->engine->version->value ) ? $detected->engine->version->value : '';
-			}
-
-			if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_OSDATA ] ) {
-				$data_layer['osName']    = isset( $detected->os->name ) ? $detected->os->name : '';
-				$data_layer['osVersion'] = isset( $detected->os->version->value ) ? $detected->os->version->value : '';
-			}
-
-			if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_DEVICEDATA ] ) {
-				$data_layer['deviceType']         = isset( $detected->device->type ) ? $detected->device->type : '';
-				$data_layer['deviceManufacturer'] = isset( $detected->device->manufacturer ) ? $detected->device->manufacturer : '';
-				$data_layer['deviceModel']        = isset( $detected->device->model ) ? $detected->device->model : '';
-			}
-		}
+		require_once dirname( __FILE__ ) . '/../integration/matomo-device-detector.php';
 	}
 
 	if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_POSTCOUNT ] ) {

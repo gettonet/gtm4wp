@@ -1,0 +1,56 @@
+<?php return array(
+    'root' => array(
+        'name' => 'duracelltomi/gtm4wp',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '5ccafe99b3550a43037f250dbca93dd1d47816f8',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'duracelltomi/gtm4wp' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '5ccafe99b3550a43037f250dbca93dd1d47816f8',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'matomo/device-detector' => array(
+            'pretty_version' => '6.3.0',
+            'version' => '6.3.0.0',
+            'reference' => '35efad75b31f2596701834d19f097497909572a4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../matomo/device-detector',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'mustangostang/spyc' => array(
+            'pretty_version' => '0.6.3',
+            'version' => '0.6.3.0',
+            'reference' => '4627c838b16550b666d15aeae1e5289dd5b77da0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mustangostang/spyc',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'piwik/device-detector' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '6.3.0',
+            ),
+        ),
+        'squizlabs/php_codesniffer' => array(
+            'pretty_version' => '3.7.1',
+            'version' => '3.7.1.0',
+            'reference' => '1359e176e9307e906dc3d890bcc9603ff6d90619',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+    ),
+);

@@ -26,7 +26,6 @@ clover.xml
 
 # Composer
 /vendor/bin
-/vendor/composer
 /vendor/squizlabs
 composer.lock
 

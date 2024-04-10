@@ -224,6 +224,21 @@ to report micro conversions and/or to serve ads only to visitors who spend more 
 
 == Changelog ==
 
+= 1.21 =
+
+* Changed: replaced unmaintained WhichBrowser library with Matomo Device Detector
+* Deprecated: data layer variables related to devide/os/browser data have now a new structure:
+  * browserName: browserData.name
+  * browserVersion: browserData.version
+  * browserEngineName: browserData.engine
+  * browserEngineVersion: browserData.engine_version
+  * osName: osData.name
+  * osVersion: osData.version
+  * deviceType: deviceData.type
+  * deviceManufacturer: deviceData.brand (!)
+  * deviceModel: deviceData.model
+* Added: new browserData, osData and deviceData data layer variables now inclulde more information besides the ones listed above (for example browserData.bot if a bot is detected)
+
 = 1.20.2 =
 
 * Fix: Wrong ID parameter used tracking product variations (id instead of item_id). Thanks [micmaf](https://github.com/micmaf)
