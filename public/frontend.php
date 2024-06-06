@@ -88,8 +88,13 @@ if (!function_exists('gtm4wp_amp_running')) {
 	}
 }
 
-
+/**
+ * Ability to add nonce to frontend scripts.
+ *
+ * @var bool
+ */
 $GLOBALS['gtm4wp_nonce'] = sanitize_text_field(apply_filters('gtm4wp_get_csp_nonce', false));
+
 /**
  * Returns the IP address of the user either from REMOVE_ADDR server variable or a custom HTTP header specified in the parameter of the funcion.
  *
